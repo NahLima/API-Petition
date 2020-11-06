@@ -1,2 +1,2 @@
 # API-Petition
-Api sobre online petition
+Api assinatruras - petição. 
