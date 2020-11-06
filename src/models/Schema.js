@@ -34,7 +34,7 @@ const assinaturaSchema = new Schema({
         type: String,
         required: true
     },
-    OptinDate :{
+    OptinDate:{
         type:Date,
         required:true
     },

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 //mongoose.Promise = global.Promise 
 
-const DB_URL = "mongodb://localhost:27017/assinaturas" // porta padrão do mongo db
+const DB_URL = "mongodb://localhost:27017/petition" // porta padrão do mongo db mais o nome da DB 
 
 const connect = () => {
     mongoose.connect(DB_URL, {useNewUrlParser:true}) // esse parametro é para a gente não ficar recebenco erros // coloca uma string para json

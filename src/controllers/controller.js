@@ -3,26 +3,21 @@ const assinaturaSchema = require('../models/Schema')
 
 
 // getAll
-// const getAssinaturas =  (req,res) => {
-//     console.log(req.url)
-//     assinaturaSchema.superSalariosCollection.find((error, allAssinaturas) => {
-//         if(error){
-//             return res.status(500).send(error)
-//         }else{
-//             return res.status(200).send(allAssinaturas)
-//         }
-//     })
-// }
-
-
-const getAssinaturas = (request, response) =>{
-    console.log(request.url)
-    response.status(200).send(assinaturaSchema)
+const getAssinaturas =  (req,res) => {
+    console.log(req.url)
+    assinaturaSchema.superSalariosCollection.find((error, allAssinaturas) => {
+        if(error){
+            return res.status(500).send(error)
+        }else{
+            return res.status(200).send(allAssinaturas)
+        }
+    })
 }
+console.log(getAssinaturas)
 
 //getAssinaturaById
 const  getAssinaturaById =  (req,res) => {
-    const idParam = req.params._id
+    const idParam = req.params.id
     assinaturaSchema.superSalariosCollection.findById(idParam, (error, assinaturaID)=>{
         if(error){
             return res.status(500).send(error)
@@ -60,9 +55,9 @@ const updateAssinatura = (req, res) => {
 
     assinaturaSchema.superSalariosCollection.findByIdAndUpdate(
         idParam,
-        assinaturaBody,
+        {$set:{assinaturaBody}}, // usar o $set quando for atualizar apenas uma informação se não usar o $set pode acontecer de apagar todas as outras infos não alteradas.
         novo,
-        (error, assinaturaUp) =>{
+        (error, assinaturaUp) =>{ // função de callback
             if(error){
                 return res.status(500).send(error)
             } else if (assinaturaUp) {
